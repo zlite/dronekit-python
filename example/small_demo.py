@@ -13,7 +13,7 @@ def mavrx_debug_handler(message):
     print "Received", message
 
 # First get an instance of the API endpoint
-api = local_connect()
+api = connect("local")
 # get our vehicle - when running with mavproxy it only knows about one vehicle (for now)
 v = api.get_vehicles()[0]
 # Print out some interesting stats about the vehicle

@@ -2,17 +2,29 @@
 import threading
 from pymavlink import mavutil
 
+def connect(scheme, options = None):
+    if scheme == "web":
+        web_connect(options)
+    elif scheme == "local":
+        local_connect()
+    else:
+        raise Exception("Invalid scheme")
+
 def web_connect(authinfo):
     """
     Connect to the central dronehub server
 
     :param authinfo: A AuthInfo container (contains username, password, challenge info, etc...)
+    .. deprecated: 1.0.2
+       Use :func:`connect` instead
     """
     return APIConnection()
 
 def local_connect():
     """
     Connect to the API provider for the local GCS (or vehicle if running on vehicle)
+    .. deprecated: 1.0.2
+       Use :func:`connect` instead
     """
     return APIConnection()
 
